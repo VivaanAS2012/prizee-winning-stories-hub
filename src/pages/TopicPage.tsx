@@ -1,4 +1,3 @@
-
 import { useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { MessageCircle, ChevronRight } from 'lucide-react';
@@ -25,6 +24,39 @@ const topics = {
       { id: 3, title: 'Esports Tournament Results', comments: 267, slug: 'esports-results', date: '2025-04-12', readTime: '6 min' },
       { id: 4, title: 'Virtual Reality Gaming Guide', comments: 198, slug: 'vr-gaming', date: '2025-04-11', readTime: '7 min' },
       { id: 5, title: 'Cloud Gaming Platforms', comments: 156, slug: 'cloud-gaming', date: '2025-04-10', readTime: '4 min' }
+    ]
+  },
+  sports: {
+    title: 'Sports',
+    description: 'Stay up to date with the latest sports news, scores, and analysis from around the world.',
+    posts: [
+      { id: 1, title: 'Champions League Final Preview', comments: 458, slug: 'champions-league-final', date: '2025-04-14', readTime: '6 min' },
+      { id: 2, title: 'NBA Playoffs Update', comments: 312, slug: 'nba-playoffs', date: '2025-04-13', readTime: '4 min' },
+      { id: 3, title: 'Formula 1 Race Results', comments: 245, slug: 'f1-results', date: '2025-04-12', readTime: '5 min' },
+      { id: 4, title: 'Tennis Grand Slam Coverage', comments: 189, slug: 'tennis-grandslam', date: '2025-04-11', readTime: '7 min' },
+      { id: 5, title: 'Olympic Games Preparation', comments: 276, slug: 'olympic-prep', date: '2025-04-10', readTime: '8 min' }
+    ]
+  },
+  entertainment: {
+    title: 'Entertainment',
+    description: 'Your source for the latest movie releases, TV shows, celebrity news, and pop culture updates.',
+    posts: [
+      { id: 1, title: 'Summer Blockbuster Preview', comments: 367, slug: 'summer-movies', date: '2025-04-14', readTime: '5 min' },
+      { id: 2, title: 'Streaming Platform Updates', comments: 289, slug: 'streaming-news', date: '2025-04-13', readTime: '4 min' },
+      { id: 3, title: 'Award Show Highlights', comments: 412, slug: 'award-shows', date: '2025-04-12', readTime: '6 min' },
+      { id: 4, title: 'Celebrity Interviews', comments: 234, slug: 'celebrity-news', date: '2025-04-11', readTime: '5 min' },
+      { id: 5, title: 'Music Festival Coverage', comments: 198, slug: 'music-festivals', date: '2025-04-10', readTime: '7 min' }
+    ]
+  },
+  business: {
+    title: 'Business',
+    description: 'Breaking business news, market analysis, and insights into global economic trends.',
+    posts: [
+      { id: 1, title: 'Stock Market Analysis', comments: 287, slug: 'stock-market', date: '2025-04-14', readTime: '6 min' },
+      { id: 2, title: 'Tech Startup Funding', comments: 198, slug: 'startup-funding', date: '2025-04-13', readTime: '5 min' },
+      { id: 3, title: 'Global Economic Trends', comments: 345, slug: 'economic-trends', date: '2025-04-12', readTime: '7 min' },
+      { id: 4, title: 'Cryptocurrency Updates', comments: 276, slug: 'crypto-news', date: '2025-04-11', readTime: '4 min' },
+      { id: 5, title: 'Industry Leadership Changes', comments: 167, slug: 'industry-leaders', date: '2025-04-10', readTime: '5 min' }
     ]
   }
 };
