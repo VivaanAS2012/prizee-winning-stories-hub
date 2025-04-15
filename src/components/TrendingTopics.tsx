@@ -53,56 +53,103 @@ export const TrendingTopics = () => {
     console.log(`Navigating to topic: ${slug}`);
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" }
+    }
+  };
+
   return (
-    <div className="mb-12">
+    <motion.div 
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+      className="mb-12"
+    >
       <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
+        variants={itemVariants}
         className="flex items-center gap-2 mb-8"
       >
         <Flame className="w-6 h-6 text-orange-500" />
         <h2 className="text-2xl font-bold text-white">Trending Topics</h2>
       </motion.div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      
+      <motion.div 
+        variants={containerVariants}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+      >
         {topics.map((topic, index) => {
           const IconComponent = topic.icon || TrendingUp;
           return (
             <motion.button
               key={topic.title}
               onClick={() => handleTopicClick(topic.slug)}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ scale: 1.02, backgroundColor: "rgba(59, 130, 246, 0.1)" }}
-              className="bg-card-hover rounded-xl p-6 cursor-pointer transition-colors text-left w-full border border-blue-500/20"
+              variants={itemVariants}
+              whileHover={{ 
+                scale: 1.03,
+                backgroundColor: "rgba(59, 130, 246, 0.15)",
+                transition: { duration: 0.3 }
+              }}
+              whileTap={{ scale: 0.98 }}
+              className="bg-card-hover rounded-xl p-6 cursor-pointer transition-all duration-300 text-left w-full border border-blue-500/20 hover:shadow-lg hover:shadow-blue-500/10"
             >
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
-                  <IconComponent className="w-5 h-5 text-blue-400" />
+                  <motion.div
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <IconComponent className="w-5 h-5 text-blue-400" />
+                  </motion.div>
                   <h3 className="text-xl font-semibold text-white group-hover:text-blue-400 transition-colors">
                     {topic.title}
                   </h3>
                 </div>
                 <p className="text-gray-400 text-sm">{topic.description}</p>
                 <div className="flex items-center justify-between mt-4">
-                  <div className="flex items-center gap-2 text-blue-400">
+                  <motion.div 
+                    className="flex items-center gap-2 text-blue-400"
+                    whileHover={{ scale: 1.05 }}
+                  >
                     <MessageCircle className="w-4 h-4" />
                     <span className="text-sm">{topic.count} discussions</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-purple-400">
+                  </motion.div>
+                  <motion.div 
+                    className="flex items-center gap-2 text-purple-400"
+                    whileHover={{ scale: 1.05 }}
+                  >
                     <Users className="w-4 h-4" />
                     <span className="text-sm">{topic.readers} readers</span>
-                  </div>
+                  </motion.div>
                 </div>
-                <div className="flex items-center gap-2 text-green-400 mt-2">
+                <motion.div 
+                  className="flex items-center gap-2 text-green-400 mt-2"
+                  initial={{ x: -10, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: index * 0.1 }}
+                >
                   <TrendingUp className="w-4 h-4" />
                   <span className="text-xs">Trending now</span>
-                </div>
+                </motion.div>
               </div>
             </motion.button>
           );
         })}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
