@@ -1,6 +1,6 @@
 
 import { motion } from "framer-motion";
-import { Flame, TrendingUp, MessageCircle, Users, Briefcase, Film, Football } from "lucide-react";
+import { Flame, TrendingUp, MessageCircle, Users, Briefcase, Film, Trophy } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const topics = [
@@ -18,7 +18,7 @@ const topics = [
     readers: "15.2k",
     description: "Latest sports news and analysis",
     slug: "sports",
-    icon: Football
+    icon: Trophy
   },
   { 
     title: "Entertainment", 
