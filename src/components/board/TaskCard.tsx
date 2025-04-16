@@ -8,6 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { cn } from "@/lib/utils";
 
 interface TaskCardProps {
   task: Task;
@@ -22,17 +23,13 @@ export function TaskCard({ task, onStatusChange }: TaskCardProps) {
   };
 
   return (
-    <div className="bg-background p-4 rounded-md border shadow-sm">
-      <div className="flex justify-between items-start mb-2">
-        <h3 className="font-medium">{task.title}</h3>
-        <AlertCircle className={`h-4 w-4 ${priorityColors[task.priority]}`} />
+    <div className="bg-background p-3 rounded-md border shadow-sm">
+      <div className="flex items-start justify-between gap-2">
+        <h3 className="font-medium text-sm truncate flex-1">{task.title}</h3>
+        <AlertCircle className={`h-4 w-4 shrink-0 ${priorityColors[task.priority]}`} />
       </div>
       
-      {task.description && (
-        <p className="text-sm text-muted-foreground mb-3">{task.description}</p>
-      )}
-
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between mt-3">
         {task.deadline && (
           <div className="flex items-center text-xs text-muted-foreground">
             <Calendar className="h-3 w-3 mr-1" />
@@ -41,7 +38,7 @@ export function TaskCard({ task, onStatusChange }: TaskCardProps) {
         )}
 
         <Select value={task.status} onValueChange={onStatusChange}>
-          <SelectTrigger className="h-8 w-[120px]">
+          <SelectTrigger className="h-7 w-[100px]">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
