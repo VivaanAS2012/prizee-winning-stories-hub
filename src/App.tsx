@@ -4,7 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Board } from "./components/board";
+import { Board } from "@/components/board";
 import Index from "./pages/Index";
 import StoryPage from "./pages/StoryPage";
 import TopicPage from "./pages/TopicPage";

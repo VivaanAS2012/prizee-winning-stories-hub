@@ -1,2 +1,3 @@
 
-export { Board } from "./Board";
+import { Board } from "./Board";
+export { Board };
