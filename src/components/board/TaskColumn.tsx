@@ -9,9 +9,12 @@ interface TaskColumnProps {
 
 export function TaskColumn({ column, onMoveTask }: TaskColumnProps) {
   return (
-    <div className="bg-card p-4 rounded-lg border">
-      <h2 className="font-semibold text-lg mb-4">{column.title}</h2>
-      <div className="space-y-3">
+    <div className="bg-card/50 rounded-xl border shadow-sm">
+      <div className="p-4 border-b">
+        <h2 className="font-semibold text-lg">{column.title}</h2>
+      </div>
+      
+      <div className="p-4 space-y-4">
         {column.tasks.map((task) => (
           <TaskCard
             key={task.id}

@@ -23,22 +23,22 @@ export function TaskCard({ task, onStatusChange }: TaskCardProps) {
   };
 
   return (
-    <div className="bg-background p-3 rounded-md border shadow-sm">
-      <div className="flex items-start justify-between gap-2">
-        <h3 className="font-medium text-sm truncate flex-1">{task.title}</h3>
+    <div className="bg-card p-4 rounded-lg border shadow-sm hover:shadow-md transition-shadow">
+      <div className="flex items-start justify-between gap-3">
+        <h3 className="font-medium text-sm leading-tight">{task.title}</h3>
         <AlertCircle className={`h-4 w-4 shrink-0 ${priorityColors[task.priority]}`} />
       </div>
       
-      <div className="flex items-center justify-between mt-3">
+      <div className="flex items-center justify-between mt-4">
         {task.deadline && (
           <div className="flex items-center text-xs text-muted-foreground">
-            <Calendar className="h-3 w-3 mr-1" />
+            <Calendar className="h-3 w-3 mr-1.5" />
             {new Date(task.deadline).toLocaleDateString()}
           </div>
         )}
 
         <Select value={task.status} onValueChange={onStatusChange}>
-          <SelectTrigger className="h-7 w-[100px]">
+          <SelectTrigger className="h-7 w-[110px]">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
