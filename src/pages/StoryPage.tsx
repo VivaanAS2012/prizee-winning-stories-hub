@@ -1,3 +1,4 @@
+
 import { useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Calendar, MessageCircle, User, ChevronLeft, Share2, Bookmark, Trophy, Timer, ArrowRight } from 'lucide-react';
@@ -5,8 +6,33 @@ import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import { Card } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
+import { Skeleton } from '@/components/ui/skeleton';
 
-const stories = {
+// Define a proper TypeScript interface for our story structure
+interface StoryContent {
+  type: string;
+  text: string;
+  author?: string;
+}
+
+interface RelatedStory {
+  title: string;
+  slug: string;
+}
+
+interface Story {
+  title: string;
+  author: string;
+  date: string;
+  comments: number;
+  readTime?: string;
+  category?: string;
+  content: StoryContent[];
+  relatedStories?: RelatedStory[];
+}
+
+// Stories data with proper typing
+const stories: Record<string, Story> = {
   'future-of-technology': {
     title: 'The Future of Technology',
     author: 'Alex Thompson',
@@ -166,10 +192,13 @@ const StoryPage = () => {
           className="space-y-8"
         >
           <div className="space-y-4">
-            <div className="flex items-center gap-2 text-blue-400">
-              <Trophy className="w-5 h-5" />
-              <span className="text-sm font-medium">{story.category}</span>
-            </div>
+            {/* Only show category if it exists */}
+            {story.category && (
+              <div className="flex items-center gap-2 text-blue-400">
+                <Trophy className="w-5 h-5" />
+                <span className="text-sm font-medium">{story.category}</span>
+              </div>
+            )}
             
             <h1 className="text-4xl md:text-5xl font-bold leading-tight tracking-tight bg-gradient-to-br from-white to-gray-400 bg-clip-text text-transparent">
               {story.title}
@@ -188,10 +217,13 @@ const StoryPage = () => {
                     <Calendar className="w-4 h-4 text-blue-400" />
                     <span>{story.date}</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Timer className="w-4 h-4 text-purple-400" />
-                    <span>{story.readTime}</span>
-                  </div>
+                  {/* Only show read time if it exists */}
+                  {story.readTime && (
+                    <div className="flex items-center gap-2">
+                      <Timer className="w-4 h-4 text-purple-400" />
+                      <span>{story.readTime}</span>
+                    </div>
+                  )}
                   <div className="flex items-center gap-2">
                     <MessageCircle className="w-4 h-4 text-green-400" />
                     <span>{story.comments} comments</span>
@@ -224,7 +256,8 @@ const StoryPage = () => {
             ))}
           </div>
 
-          {story.relatedStories && (
+          {/* Only show related stories section if it exists */}
+          {story.relatedStories && story.relatedStories.length > 0 && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
