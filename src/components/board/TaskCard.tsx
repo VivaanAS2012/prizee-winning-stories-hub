@@ -8,7 +8,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { cn } from "@/lib/utils";
 
 interface TaskCardProps {
   task: Task;
@@ -17,15 +16,17 @@ interface TaskCardProps {
 
 export function TaskCard({ task, onStatusChange }: TaskCardProps) {
   const priorityColors = {
-    low: "text-green-500",
-    medium: "text-yellow-500",
-    high: "text-red-500",
+    low: "text-emerald-500",
+    medium: "text-amber-500",
+    high: "text-rose-500",
   };
 
   return (
-    <div className="bg-card p-4 rounded-lg border shadow-sm hover:shadow-md transition-shadow">
+    <div className="bg-card rounded-lg border shadow-sm hover:shadow-md transition-all duration-200 p-4 group">
       <div className="flex items-start justify-between gap-3">
-        <h3 className="font-medium text-sm leading-tight">{task.title}</h3>
+        <h3 className="font-medium text-sm leading-tight group-hover:text-accent transition-colors">
+          {task.title}
+        </h3>
         <AlertCircle className={`h-4 w-4 shrink-0 ${priorityColors[task.priority]}`} />
       </div>
       
@@ -38,7 +39,7 @@ export function TaskCard({ task, onStatusChange }: TaskCardProps) {
         )}
 
         <Select value={task.status} onValueChange={onStatusChange}>
-          <SelectTrigger className="h-7 w-[110px]">
+          <SelectTrigger className="h-7 w-[110px] text-xs bg-accent/5 border-accent/20">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>

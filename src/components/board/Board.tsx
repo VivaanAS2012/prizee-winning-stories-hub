@@ -40,11 +40,17 @@ export function Board() {
   };
 
   return (
-    <div className="min-h-screen bg-background p-6">
+    <div className="min-h-screen bg-background/50 p-6 bg-gradient-to-br from-accent/5 to-background">
       <div className="max-w-[1400px] mx-auto space-y-8">
         <div className="flex justify-between items-center">
-          <h1 className="text-3xl font-bold tracking-tight">Project Board</h1>
-          <Button onClick={() => setIsCreateDialogOpen(true)} size="sm" className="gap-2">
+          <h1 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+            Project Board
+          </h1>
+          <Button 
+            onClick={() => setIsCreateDialogOpen(true)} 
+            size="sm" 
+            className="gap-2 bg-accent hover:bg-accent/90"
+          >
             <PlusCircle className="h-4 w-4" />
             Add Task
           </Button>
