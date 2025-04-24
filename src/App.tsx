@@ -1,10 +1,9 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Board } from "@/components/board";
+import { PingPong } from "@/components/game/PingPong";
 import Index from "./pages/Index";
 import StoryPage from "./pages/StoryPage";
 import TopicPage from "./pages/TopicPage";
@@ -19,7 +18,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Board />} />
+          <Route path="/" element={<PingPong />} />
           <Route path="/story/:slug" element={<StoryPage />} />
           <Route path="/topic/:slug" element={<TopicPage />} />
           <Route path="*" element={<NotFound />} />
